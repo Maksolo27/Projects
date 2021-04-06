@@ -84,6 +84,7 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         frame.getContentPane().add(this);
         frame.setVisible(true);
         frame.addKeyListener(this);
+
     }
 
     private void score(int score) {
