@@ -3,8 +3,7 @@ package Base.UserInterface;
 
 import Base.Collection.ArrayCollection;
 import Base.Collection.GameCollection;
-import Base.MapLoaders.HardLoader;
-import Base.MapLoaders.MediumLoader;
+import Base.MapLoaders.*;
 import Base.Objects.Enums.Direction;
 import Base.Objects.Enums.ObjectType;
 import Base.Observer.CollectionSubscriber;
@@ -52,7 +51,10 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
     JLabel labelGameStatus = new JLabel();
 
     public GameMap() {
-        collection = new ArrayCollection(new MediumLoader());
+        LoaderFactory loaderFactory = new LoaderFactory();
+
+        Loader loader = loaderFactory.getLoader(LoaderType.HARDLOADER);
+        collection = new ArrayCollection(loader);
 
         collection.addListener(this);
         JFrame frame = new JFrame("Maze runner");
