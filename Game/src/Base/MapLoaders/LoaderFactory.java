@@ -1,6 +1,7 @@
 package Base.MapLoaders;
 
 public class LoaderFactory {
+
     public Loader getLoader(LoaderType type){
         Loader loader = null;
         switch (type) {

@@ -7,8 +7,7 @@ import Base.MapLoaders.*;
 import Base.Objects.Enums.Direction;
 import Base.Objects.Enums.ObjectType;
 import Base.Observer.CollectionSubscriber;
-import Base.Objects.Realization.*;
-import Base.Strategy.RandomStrategy;
+import Base.Objects.Implementation.*;
 import Base.Threads.GameThread;
 
 
@@ -26,6 +25,7 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
 
     final int WIDTH = 576;
     final int HEIGHT = 576;
+
     public Player player = new Player();
 
     private String gameStatus = "Play game";
@@ -35,8 +35,6 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         GameThread thread = new GameThread(collection);
         thread.start();
     }
-
-
 
     public static void main(String[] args) throws Exception {
         GameMap main = new GameMap();
@@ -71,7 +69,6 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         table.setUpdateSelectionOnSort(false);
         table.setVerifyInputWhenFocusTarget(false);
 
-
         Arrays.fill(column, "");
 
         drawTable();
@@ -81,6 +78,7 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         add(labelSteps);
         add(labelTime);
         add(labelGameStatus);
+
         frame.setMinimumSize(new Dimension(WIDTH,HEIGHT + 22));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
@@ -93,7 +91,6 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         labelScore.setText("Score: " + score);
     }
 
-
     private void countSteps(int countSteps) {
         labelSteps.setText("Counter: " + countSteps);
     }
@@ -101,9 +98,6 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
     private void gameStatus() {
         labelGameStatus.setText(gameStatus);
     }
-
-
-
 
     public void drawTable() {
 

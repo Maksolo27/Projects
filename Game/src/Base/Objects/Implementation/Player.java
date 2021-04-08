@@ -1,4 +1,4 @@
-package Base.Objects.Realization;
+package Base.Objects.Implementation;
 
 import Base.Objects.Abstracts.AbstractFigur;
 import Base.Objects.Abstracts.AbstractMovingFigur;
@@ -12,12 +12,10 @@ public class Player extends AbstractMovingFigur implements Serializable { ;
     int score = 0;
     int countSteps = 50;
 
-
     public Player(){
         setImage(new ImageIcon(getClass().getResource("/images/goldman_up.png")));
         setObjectType(ObjectType.PLAYER);
     }
-
 
     public int getScore() {
         return score;

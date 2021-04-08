@@ -6,13 +6,12 @@ import Base.Objects.Abstracts.AbstractMovingFigur;
 import Base.Objects.Enums.Action;
 import Base.Objects.Enums.Direction;
 import Base.Objects.Enums.ObjectType;
-import Base.Objects.Realization.Emptiness;
-import Base.Objects.Realization.Player;
-import Base.Objects.Realization.Wall;
+import Base.Objects.Implementation.Emptiness;
+import Base.Objects.Implementation.Player;
+import Base.Objects.Implementation.Wall;
 import Base.Observer.CollectionPublisherImpl;
 import Base.Strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -54,12 +53,10 @@ public class ArrayCollection extends CollectionPublisherImpl {
         }
     }
 
-
     @Override
     public AbstractFigur[][] getData() {
         return data;
     }
-
 
     public AbstractFigur getFigurByCoordinate(int y, int x) {
         try {
@@ -96,9 +93,6 @@ public class ArrayCollection extends CollectionPublisherImpl {
             }
 
         }
-
-
-
 
     }
 

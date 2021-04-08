@@ -1,4 +1,4 @@
-package Base.Objects.Realization;
+package Base.Objects.Implementation;
 
 import Base.Objects.Abstracts.AbstractFigur;
 import Base.Objects.Enums.ObjectType;

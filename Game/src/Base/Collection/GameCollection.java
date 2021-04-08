@@ -4,7 +4,7 @@ package Base.Collection;
 import Base.Objects.Abstracts.AbstractFigur;
 import Base.Objects.Enums.Direction;
 import Base.Objects.Enums.ObjectType;
-import Base.Objects.Realization.Player;
+import Base.Objects.Implementation.Player;
 import Base.Observer.CollectionPublisher;
 import Base.Strategy.MovingStrategy;
 
