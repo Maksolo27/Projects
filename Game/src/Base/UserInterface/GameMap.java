@@ -59,6 +59,9 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
 
         table=new JTable();
 
+
+
+
         table.setTableHeader(null);
         table.setEnabled(false);
         table.setSize(new Dimension(300, 300));
@@ -100,7 +103,6 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
     }
 
     public void drawTable() {
-
 
         table.setModel(new DefaultTableModel(collection.getData(), column));
 
