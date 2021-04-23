@@ -51,7 +51,7 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
     public GameMap() {
         LoaderFactory loaderFactory = new LoaderFactory();
 
-        Loader loader = loaderFactory.getLoader(LoaderType.HARDLOADER);
+        Loader loader = loaderFactory.getLoader(LoaderType.MEDIUMLOADER);
         collection = new ArrayCollection(loader);
 
         collection.addListener(this);

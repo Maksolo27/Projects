@@ -7,10 +7,13 @@ public class LoaderFactory {
         switch (type) {
             case EASYLOADER:
                 loader = new EasyLoader();
+                break;
             case MEDIUMLOADER:
                 loader = new MediumLoader();
+                break;
             case HARDLOADER:
                 loader = new HardLoader();
+                break;
         }
         return loader;
         }
