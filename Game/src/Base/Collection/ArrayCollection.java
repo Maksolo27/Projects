@@ -1,6 +1,8 @@
 package Base.Collection;
 
-import Base.MapLoaders.Loader;
+import Base.MapLoaders.DifficultyLoader;
+import Base.MapLoaders.mapLoaders.MapLoaderFactory;
+import Base.MapLoaders.mapLoaders.Maps;
 import Base.Objects.Abstracts.AbstractFigur;
 import Base.Objects.Abstracts.AbstractMovingFigur;
 import Base.Objects.Enums.Action;
@@ -8,7 +10,6 @@ import Base.Objects.Enums.Direction;
 import Base.Objects.Enums.ObjectType;
 import Base.Objects.Implementation.Emptiness;
 import Base.Objects.Implementation.Player;
-import Base.Objects.Implementation.Wall;
 import Base.Observer.CollectionPublisherImpl;
 import Base.Strategy.MovingStrategy;
 
@@ -16,7 +17,9 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ArrayCollection extends CollectionPublisherImpl {
-    AbstractFigur[][] data = {
+    MapLoaderFactory mapLoaderFactory = new MapLoaderFactory();
+    AbstractFigur[][] data = mapLoaderFactory.getMap(Maps.SPIRAL);
+    /*{
             {new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness()},
             {new Wall(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall()},
             {new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness()},
@@ -29,12 +32,12 @@ public class ArrayCollection extends CollectionPublisherImpl {
             {new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Wall()},
             {new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness()},
             {new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness()}
-    };
+    };*/
     private final List<AbstractMovingFigur> movingObjects = new CopyOnWriteArrayList<>();
     private Player player = new Player();
 
-    public ArrayCollection(Loader loader) {
-        data = loader.loading(this.data, player);
+    public ArrayCollection(DifficultyLoader difficultyLoader) {
+        data = difficultyLoader.loading(this.data, player);
         initOthers();
     }
 

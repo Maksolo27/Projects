@@ -2,7 +2,6 @@ package Base.MapLoaders;
 
 import Base.Objects.Enums.Action;
 
-public enum LoaderType {
-
+public enum DifficultyLoaderType {
     EASYLOADER,MEDIUMLOADER,HARDLOADER
 }

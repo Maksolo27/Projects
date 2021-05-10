@@ -2,20 +2,20 @@ package Base.MapLoaders;
 
 public class LoaderFactory {
 
-    public Loader getLoader(LoaderType type){
-        Loader loader = null;
+    public DifficultyLoader getLoader(DifficultyLoaderType type){
+        DifficultyLoader difficultyLoader = null;
         switch (type) {
             case EASYLOADER:
-                loader = new EasyLoader();
+                difficultyLoader = new EasyDifficultyLoader();
                 break;
             case MEDIUMLOADER:
-                loader = new MediumLoader();
+                difficultyLoader = new MediumDifficultyLoader();
                 break;
             case HARDLOADER:
-                loader = new HardLoader();
+                difficultyLoader = new HardDifficultyLoader();
                 break;
         }
-        return loader;
+        return difficultyLoader;
         }
     }
 
