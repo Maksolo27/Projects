@@ -10,6 +10,7 @@ import Base.Objects.Enums.Direction;
 import Base.Objects.Enums.ObjectType;
 import Base.Objects.Implementation.Emptiness;
 import Base.Objects.Implementation.Player;
+import Base.Objects.Implementation.Wall;
 import Base.Observer.CollectionPublisherImpl;
 import Base.Strategy.MovingStrategy;
 
@@ -18,8 +19,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ArrayCollection extends CollectionPublisherImpl {
     MapLoaderFactory mapLoaderFactory = new MapLoaderFactory();
-    AbstractFigur[][] data = mapLoaderFactory.getMap(Maps.SPIRAL);
-    /*{
+    AbstractFigur[][] data = {
             {new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness()},
             {new Wall(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall()},
             {new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness()},
@@ -32,7 +32,7 @@ public class ArrayCollection extends CollectionPublisherImpl {
             {new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Wall()},
             {new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness()},
             {new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness()}
-    };*/
+    };
     private final List<AbstractMovingFigur> movingObjects = new CopyOnWriteArrayList<>();
     private Player player = new Player();
 
@@ -115,9 +115,7 @@ public class ArrayCollection extends CollectionPublisherImpl {
         int y = nextCoord[0];
         int x = nextCoord[1];
         AbstractFigur nextObject = getFigurByCoordinate(y, x);
-
         Action action = movingFigur.process(nextObject);
-
         AbstractFigur swapedFigur = new Emptiness();
         switch (action) {
             case LOSE:

@@ -29,23 +29,19 @@ public class MapLoaderFactory {
     }
 
     private AbstractFigur[][] parseStringToGameMap(String stringMap, int height, int width) {
-        String[] strings = stringMap.split(" ");
-        System.out.println(Arrays.toString(strings));
-        AbstractFigur[][] data = new Emptiness[height][width];
+        AbstractFigur[][] abstractFigurs = new Emptiness[height][width];
         int k = 0;
-        while (k < strings.length) {
-            for (int i = 0; i < data.length; i++) {
-                for (int j = 0; j < data[i].length; j++) {
-                    System.out.println("k: " + k);
-                    System.out.println("i: " + i + " j: " + j);
-                    if (strings[k].equals("W")) {
-                        data[i][j] = new Wall();
-                    }
+        while (k < stringMap.length()) {
+            for (int i = 0; i < abstractFigurs.length; i++) {
+                for (int j = 0; j < abstractFigurs[i].length; j++) {
+                    abstractFigurs[i][j] = new Wall();
+                    k++;
                 }
             }
-            k++;
+
         }
-        return data;
+        return abstractFigurs;
+
     }
 
 
