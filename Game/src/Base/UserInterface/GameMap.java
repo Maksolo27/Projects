@@ -10,7 +10,6 @@ import Base.Observer.CollectionSubscriber;
 import Base.Objects.Implementation.*;
 import Base.Threads.GameThread;
 
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -50,18 +49,11 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
 
     public GameMap() {
         LoaderFactory loaderFactory = new LoaderFactory();
-
         DifficultyLoader difficultyLoader = loaderFactory.getLoader(DifficultyLoaderType.EASYLOADER);
         collection = new ArrayCollection(difficultyLoader);
-
         collection.addListener(this);
         JFrame frame = new JFrame("Maze runner");
-
-        table=new JTable();
-
-
-
-
+        table = new JTable();
         table.setTableHeader(null);
         table.setEnabled(false);
         table.setSize(new Dimension(300, 300));
@@ -71,23 +63,18 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         table.setShowVerticalLines(false);
         table.setUpdateSelectionOnSort(false);
         table.setVerifyInputWhenFocusTarget(false);
-
         Arrays.fill(column, "");
-
         drawTable();
-
         add(table);
         add(labelScore);
         add(labelSteps);
         add(labelTime);
         add(labelGameStatus);
-
         frame.setMinimumSize(new Dimension(WIDTH,HEIGHT + 22));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.setVisible(true);
         frame.addKeyListener(this);
-
     }
 
     private void score(int score) {
@@ -103,9 +90,7 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
     }
 
     public void drawTable() {
-
         table.setModel(new DefaultTableModel(collection.getData(), column));
-
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(new ImageRenderer());
             TableColumn a = table.getColumnModel().getColumn(i);
@@ -116,11 +101,9 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
 
     @Override
     public void notifyFromListener() {
-
         Player player = collection.getPlayer();
         score(player.getScore());
         countSteps(player.getCountSteps());
-
         drawTable();
     }
 
