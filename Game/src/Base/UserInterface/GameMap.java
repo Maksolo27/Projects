@@ -10,6 +10,7 @@ import Base.Observer.CollectionSubscriber;
 import Base.Objects.Implementation.*;
 import Base.Threads.GameThread;
 
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -21,14 +22,12 @@ import java.util.Arrays;
 import static java.awt.event.KeyEvent.*;
 
 public class GameMap extends JPanel implements CollectionSubscriber, KeyListener {
-
     final int WIDTH = 576;
     final int HEIGHT = 576;
-
     public Player player = new Player();
-
     private String gameStatus = "Play game";
     public GameCollection collection;
+
 
     void runTheGame() throws Exception {
         GameThread thread = new GameThread(collection);
@@ -49,11 +48,11 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
 
     public GameMap() {
         LoaderFactory loaderFactory = new LoaderFactory();
-        DifficultyLoader difficultyLoader = loaderFactory.getLoader(DifficultyLoaderType.EASYLOADER);
+        DifficultyLoader difficultyLoader = loaderFactory.getLoader(DifficultyLoaderType.HARDLOADER);
         collection = new ArrayCollection(difficultyLoader);
         collection.addListener(this);
         JFrame frame = new JFrame("Maze runner");
-        table = new JTable();
+        table=new JTable();
         table.setTableHeader(null);
         table.setEnabled(false);
         table.setSize(new Dimension(300, 300));

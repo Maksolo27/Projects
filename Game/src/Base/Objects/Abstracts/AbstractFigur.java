@@ -5,6 +5,7 @@ import Base.Objects.Enums.ObjectType;
 import javax.swing.*;
 
 public abstract class AbstractFigur {
+
     private int x, y;
     private ImageIcon image;
     private ObjectType objectType;

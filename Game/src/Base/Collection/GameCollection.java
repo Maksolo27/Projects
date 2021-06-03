@@ -9,6 +9,7 @@ import Base.Observer.CollectionPublisher;
 import Base.Strategy.MovingStrategy;
 
 public interface GameCollection extends CollectionPublisher {
+
     AbstractFigur[][] getData();
 
     AbstractFigur getFigurByCoordinate(int y, int x);

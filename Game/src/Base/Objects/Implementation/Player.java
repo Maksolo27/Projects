@@ -8,7 +8,8 @@ import Base.Objects.Enums.ObjectType;
 import javax.swing.*;
 import java.io.Serializable;
 
-public class Player extends AbstractMovingFigur implements Serializable { ;
+public class Player extends AbstractMovingFigur implements Serializable {
+
     int score = 0;
     int countSteps = 50;
 
@@ -31,7 +32,6 @@ public class Player extends AbstractMovingFigur implements Serializable { ;
             return Action.LOSE;
         }
         Action result = super.process(nextObject);
-
         if(result != Action.NONE){
             countSteps--;
             return result;
