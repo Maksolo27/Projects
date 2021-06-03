@@ -22,14 +22,17 @@ import java.util.Arrays;
 import static java.awt.event.KeyEvent.*;
 
 public class GameMap extends JPanel implements CollectionSubscriber, KeyListener {
-
     final int WIDTH = 576;
     final int HEIGHT = 576;
-
     public Player player = new Player();
-
     private String gameStatus = "Play game";
     public GameCollection collection;
+    JTable table;
+    String[] column = new String[11];
+    JLabel labelScore = new JLabel();
+    JLabel labelSteps = new JLabel();
+    JLabel labelTime = new JLabel();
+    JLabel labelGameStatus = new JLabel();
 
     void runTheGame() throws Exception {
         GameThread thread = new GameThread(collection);
@@ -41,24 +44,14 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         main.runTheGame();
     }
 
-    JTable table;
-    String[] column = new String[11];
-    JLabel labelScore = new JLabel();
-    JLabel labelSteps = new JLabel();
-    JLabel labelTime = new JLabel();
-    JLabel labelGameStatus = new JLabel();
-
     public GameMap() {
         LoaderFactory loaderFactory = new LoaderFactory();
 
         DifficultyLoader difficultyLoader = loaderFactory.getLoader(DifficultyLoaderType.HARDLOADER);
         collection = new ArrayCollection(difficultyLoader);
-
         collection.addListener(this);
         JFrame frame = new JFrame("Maze runner");
-
         table=new JTable();
-
         table.setTableHeader(null);
         table.setEnabled(false);
         table.setSize(new Dimension(300, 300));
@@ -68,23 +61,18 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         table.setShowVerticalLines(false);
         table.setUpdateSelectionOnSort(false);
         table.setVerifyInputWhenFocusTarget(false);
-
         Arrays.fill(column, "");
-
         drawTable();
-
         add(table);
         add(labelScore);
         add(labelSteps);
         add(labelTime);
         add(labelGameStatus);
-
         frame.setMinimumSize(new Dimension(WIDTH,HEIGHT + 22));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.setVisible(true);
         frame.addKeyListener(this);
-
     }
 
     private void score(int score) {
@@ -100,9 +88,7 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
     }
 
     public void drawTable() {
-
         table.setModel(new DefaultTableModel(collection.getData(), column));
-
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(new ImageRenderer());
             TableColumn a = table.getColumnModel().getColumn(i);
@@ -113,11 +99,9 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
 
     @Override
     public void notifyFromListener() {
-
         Player player = collection.getPlayer();
         score(player.getScore());
         countSteps(player.getCountSteps());
-
         drawTable();
     }
 

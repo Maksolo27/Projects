@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ArrayCollection extends CollectionPublisherImpl {
+
     MapLoaderFactory mapLoaderFactory = new MapLoaderFactory();
     AbstractFigur[][] data = {
             {new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Wall(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness(), new Emptiness()},
@@ -87,14 +88,11 @@ public class ArrayCollection extends CollectionPublisherImpl {
 
     @Override
     public void moveMovableFigur(ObjectType type, Direction direction) {
-
         for (int i = 0; i < movingObjects.size(); i++) {
             AbstractMovingFigur movingFigur = movingObjects.get(i);
-
             if (movingFigur.getObjectType() == type) {
                 moveFigurToDirection(movingFigur, direction);
             }
-
         }
 
     }

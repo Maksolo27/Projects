@@ -17,10 +17,8 @@ public abstract class AbstractMovingFigur extends AbstractFigur {
     }
 
     public int[] move(Direction direction) {
-
         int y = getY();
         int x = getX();
-
         switch (direction) {
             case UP:
                 y--;
@@ -28,11 +26,9 @@ public abstract class AbstractMovingFigur extends AbstractFigur {
             case DOWN:
                 y++;
                 break;
-
             case LEFT:
                 x--;
                 break;
-
             case RIGHT:
                 x++;
                 break;
