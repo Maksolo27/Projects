@@ -27,12 +27,7 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
     public Player player = new Player();
     private String gameStatus = "Play game";
     public GameCollection collection;
-    JTable table;
-    String[] column = new String[11];
-    JLabel labelScore = new JLabel();
-    JLabel labelSteps = new JLabel();
-    JLabel labelTime = new JLabel();
-    JLabel labelGameStatus = new JLabel();
+
 
     void runTheGame() throws Exception {
         GameThread thread = new GameThread(collection);
@@ -43,6 +38,13 @@ public class GameMap extends JPanel implements CollectionSubscriber, KeyListener
         GameMap main = new GameMap();
         main.runTheGame();
     }
+
+    JTable table;
+    String[] column = new String[11];
+    JLabel labelScore = new JLabel();
+    JLabel labelSteps = new JLabel();
+    JLabel labelTime = new JLabel();
+    JLabel labelGameStatus = new JLabel();
 
     public GameMap() {
         LoaderFactory loaderFactory = new LoaderFactory();
